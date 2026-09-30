@@ -18,7 +18,12 @@ public class MainMenu : IScene
             FontSize = 48
         };
         Elements.Add(mainText);
-        Return @return = new Return(SceneId.MainMenu);
+        
+        List<UIElement> returnButton = new ReturnButton(SceneId.Custom).Children;
+        foreach (var uiElement in returnButton) Elements.Add(uiElement);
+
+        List<UIElement> hostButton = new HostButton(SceneId.Host).Children;
+        foreach (var uiElement in hostButton) Elements.Add(uiElement);
     }
 
     

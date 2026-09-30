@@ -6,12 +6,12 @@ using MultiInputClient.Enums;
 
 namespace MultiInputClient.CustomElements.Buttons;
 
-public class ReturnButton : UIElement
+public class HostButton
 {
     internal readonly List<UIElement> Children = new List<UIElement>();
     private TextBlock _textBlock;
     private SceneId _sceneId;
-    public ReturnButton(SceneId sceneToReturnTo){
+    public HostButton(SceneId sceneToReturnTo){
         _sceneId = sceneToReturnTo;
         _textBlock = new TextBlock();
         InitializeButton();
@@ -24,11 +24,11 @@ public class ReturnButton : UIElement
 
     private void InitializeButton(){
         _textBlock.MouseLeftButtonDown += OnButton_Pressed;
-        _textBlock.Text = $"Return";
+        _textBlock.Text = $"HostButton";
         _textBlock.FontSize = 24;
         _textBlock.Background = Brushes.Gray;
         _textBlock.HorizontalAlignment = HorizontalAlignment.Right;
-        _textBlock.VerticalAlignment = VerticalAlignment.Bottom;
+        _textBlock.VerticalAlignment = VerticalAlignment.Top;
         Children.Add(_textBlock);
     }
 }

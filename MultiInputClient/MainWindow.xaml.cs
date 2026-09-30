@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using MultiInputClient.Enums;
 using MultiInputClient.Interfaces;
 using MultiInputClient.Scenes;
+using SDL3;
 
 namespace MultiInputClient;
 
@@ -29,15 +30,29 @@ public partial class MainWindow : Window
         Window = this;
         InitializeComponent();
         InitializeScenes();
+        InitializeSDL();
         LoadScene(SceneId.MainMenu);
+    }
+
+    private void InitializeSDL(){
+        SDL.Init(SDL.InitFlags.Gamepad);
     }
 
     private void InitializeScenes(){
         MainMenu mainMenu = new MainMenu();
         mainMenu.Initialize();
         Scenes.Add(mainMenu);
-
         
+        SampleScene sampleScene = new SampleScene();
+        sampleScene.Initialize();
+        Scenes.Add(sampleScene);
+
+        HostScene hostScene = new HostScene();
+        hostScene.Initialize();
+        Scenes.Add(hostScene);
+
+
+
     }
 
     public static bool LoadScene(SceneId sceneId){
@@ -51,9 +66,10 @@ public partial class MainWindow : Window
             return true;
         }
         ActiveScene?.UnLoad();
+        scene.Load();
         ActiveScene = scene;
         ActiveSceneId = sceneId;
-        scene.Load();
         return true;
+        
     }
 }
