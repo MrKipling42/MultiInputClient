@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MultiInputClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Background="DarkGray"
+        BorderThickness="5"
+        ResizeMode="NoResize"
+        BorderBrush="Blue"
+        Title="MultiInputGui" Height="500" Width="400">
+    
+    <Grid Name="MainGrid">  
+            
     </Grid>
 </Window>
